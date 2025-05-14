@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import java.util.Date;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 如果是简单的排序 和 时间范围筛选  可以使用内置的这几个字段
@@ -21,9 +22,11 @@ public abstract class AbstractQuery<T> {
 
     protected String timeRangeColumn;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
     private Date beginTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
     private Date endTime;
 

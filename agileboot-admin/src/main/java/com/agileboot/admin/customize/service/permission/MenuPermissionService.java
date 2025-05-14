@@ -30,7 +30,7 @@ public class MenuPermissionService {
         if (loginUser == null || CollUtil.isEmpty(loginUser.getRoleInfo().getMenuPermissions())) {
             return false;
         }
-        return has(loginUser.getRoleInfo().getMenuPermissions(), permission);
+        return hasParent(loginUser.getRoleInfo().getMenuPermissions(), permission) || has(loginUser.getRoleInfo().getMenuPermissions(), permission);
     }
 
 
@@ -45,4 +45,22 @@ public class MenuPermissionService {
         return permissions.contains(RoleInfo.ALL_PERMISSIONS) || permissions.contains(StrUtil.trim(permission));
     }
 
+    /**
+     * 是否包含父权限
+     * @param permissions
+     * @param permission
+     * @return
+     */
+    private boolean hasParent(Set<String> permissions, String permission) {
+        if (StrUtil.isNotEmpty(permission) && permission.lastIndexOf(":") != permission.indexOf(":")) {
+            // 将第二个冒号后面的内容替换成list，再判断是否包含
+            int secondIndex = permission.lastIndexOf(":");
+            if (secondIndex != -1) {
+                String parentPermission = permission.substring(0, secondIndex) + ":list";
+                return has(permissions, parentPermission);
+            }
+        }
+        return false;
+        // 包含list，则包含所有
+    }
 }

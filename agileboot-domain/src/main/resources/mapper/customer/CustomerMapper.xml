@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.agileboot.domain.biz.customer.db.CustomerMapper">
+
+    <select id="listCustomer" resultType="com.agileboot.domain.biz.customer.dto.CustomerBalanceDTO">
+        SELECT
+            c.id,
+            c.phone,
+            b.name,
+            b.balance
+        FROM
+            biz_customer c
+            left join biz_balance b on c.id = b.customer_id
+        <where>
+            <if test="param.name != null and param.name != ''">
+                AND c.name LIKE CONCAT('%', #{param.name}, '%')
+            </if>
+            <if test="param.phoneSuffix != null and param.phoneSuffix != ''">
+                AND right(c.phone, 4) = #{param.phoneSuffix}
+            </if>
+            AND b.dept_id = #{param.deptId}
+        </where>
+    </select>
+</mapper>

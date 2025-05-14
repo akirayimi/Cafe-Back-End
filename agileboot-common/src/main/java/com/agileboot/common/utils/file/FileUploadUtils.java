@@ -53,7 +53,10 @@ public class FileUploadUtils {
             // 视频格式
             "mp4", "avi", "rmvb",
             // pdf
-            "pdf"};
+            "pdf",
+
+            "apk"
+    };
 
     private FileUploadUtils() {
     }

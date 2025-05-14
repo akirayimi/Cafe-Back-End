@@ -59,11 +59,11 @@ public class CodeGenerator {
             .password(password)
             .author("valarchie")
             //生成的类 放在orm子模块下的/target/generated-code目录底下
-            .module("/agileboot-orm/target/generated-code")
+            .module("/agileboot-infrastructure/generated-code")
             .parentPackage("com.agileboot")
-            .tableName("sys_menu")
+            .tableName("biz_balance_log_att")
             // 决定是否继承基类
-            .isExtendsFromBaseEntity(true)
+            .isExtendsFromBaseEntity(false)
             .build();
 
         generator.generateCode();
@@ -107,7 +107,7 @@ public class CodeGenerator {
                 // generate swagger annotations.
                 .enableSwagger()
                 // 注释日期的格式
-                .commentDate("yyyy-MM-dd")
+                .commentDate("yyyy-MM-dd HH:mm:ss")
                 .build());
     }
 
@@ -168,7 +168,7 @@ public class CodeGenerator {
                 // filter which tables need to be generated
 //                    .likeTable(new LikeTable("USER"))
 //                    .addInclude("t_simple")
-//                    .addTablePrefix("t_", "c_")
+                    .addTablePrefix("biz_")
 //                    .addFieldSuffix("_flag")
                 .addInclude(tableName);
 
@@ -189,7 +189,7 @@ public class CodeGenerator {
 //                    .enableChainModel()
             .enableLombok()
             // boolean field
-//                    .enableRemoveIsPrefix()
+            .enableRemoveIsPrefix()
             .enableTableFieldAnnotation()
             // operate entity like JPA.
             .enableActiveRecord()
@@ -211,7 +211,7 @@ public class CodeGenerator {
             .addTableFills(new Property("updaterId", FieldFill.INSERT_UPDATE))
             // ID strategy AUTO, NONE, INPUT, ASSIGN_ID, ASSIGN_UUID;
             .idType(IdType.AUTO)
-            .formatFileName("%sEntity");
+            .formatFileName("%s");
 
         if (isExtendsFromBaseEntity) {
             entityBuilder

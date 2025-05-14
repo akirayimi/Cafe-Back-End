@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -125,6 +126,7 @@ public class MenuApplicationService {
         List<SysMenuEntity> noButtonMenus = allMenus.stream()
             .filter(menu -> !menu.getIsButton())
             .filter(menu-> StatusEnum.ENABLE.getValue().equals(menu.getStatus()))
+            .filter(menu -> StringUtils.isNotBlank(menu.getRouterName()) || StringUtils.isNotBlank(menu.getPath()))
             .collect(Collectors.toList());
 
         TreeNodeConfig config = new TreeNodeConfig();

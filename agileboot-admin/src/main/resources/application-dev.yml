@@ -103,3 +103,5 @@ agileboot:
     # 前端url请求转发前缀
     api-prefix: /dev-api
     demo-enabled: false
+biz:
+    full-data-access-role-key: ['admin', "root"]

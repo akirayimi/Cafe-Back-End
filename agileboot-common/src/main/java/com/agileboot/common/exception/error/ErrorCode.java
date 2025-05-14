@@ -80,6 +80,10 @@ public enum ErrorCode implements ErrorCodeInterface {
 
         COMMON_FILE_NOT_ALLOWED_TO_DOWNLOAD(10004, "文件名称({})非法，不允许下载", "Business.FILE_NOT_ALLOWED_TO_DOWNLOAD"),
 
+        COMMON_RECORD_MISS(10005, "{}不存在", "Business.RECORD_NOT_EXIST"),
+
+        COMMON_RECORD_EXIST(10006, "{}已存在", "Business.RECORD_ALREADY_EXIST"),
+
         // ----------------------------- PERMISSION -----------------------------------
 
         PERMISSION_FORBIDDEN_TO_MODIFY_ADMIN(10101, "不允许修改管理员的信息", "Business.FORBIDDEN_TO_MODIFY_ADMIN"),
@@ -203,6 +207,9 @@ public enum ErrorCode implements ErrorCodeInterface {
         USER_CURRENT_USER_CAN_NOT_BE_DELETE(10514, "当前用户不允许被删除", "Business.USER_CURRENT_USER_CAN_NOT_BE_DELETE"),
 
         USER_ADMIN_CAN_NOT_BE_MODIFY(10515, "管理员不允许做任何修改", "Business.USER_ADMIN_CAN_NOT_BE_MODIFY"),
+
+        // ---------------------------------- balance -----------------------------------------------
+        BALANCE_NOT_ENOUGH(10600, "账户余额不足", "Business.USER_BALANCE_INSUFFICIENT"),
 
         ;
 
