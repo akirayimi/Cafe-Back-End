@@ -1,0 +1,8 @@
+wx:
+  miniapp:
+    configs:
+      - appid: wx2716c8072205926b
+        secret: 33a6d30fe74ea15f0ab2ffd7cb63aee1
+        token: wxtoken
+        aesKey: wxaesKey
+        msgDataFormat: json

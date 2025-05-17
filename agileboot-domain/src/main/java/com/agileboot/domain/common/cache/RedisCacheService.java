@@ -4,6 +4,7 @@ import cn.hutool.extra.spring.SpringUtil;
 import com.agileboot.infrastructure.cache.RedisUtil;
 import com.agileboot.infrastructure.cache.redis.CacheKeyEnum;
 import com.agileboot.infrastructure.cache.redis.RedisCacheTemplate;
+import com.agileboot.infrastructure.user.app.AppLoginUser;
 import com.agileboot.infrastructure.user.web.SystemLoginUser;
 import com.agileboot.domain.system.post.db.SysPostEntity;
 import com.agileboot.domain.system.role.db.SysRoleEntity;
@@ -27,6 +28,7 @@ public class RedisCacheService {
 
     public RedisCacheTemplate<String> captchaCache;
     public RedisCacheTemplate<SystemLoginUser> loginUserCache;
+    public RedisCacheTemplate<AppLoginUser> loginAppUserCache;
     public RedisCacheTemplate<SysUserEntity> userCache;
     public RedisCacheTemplate<SysRoleEntity> roleCache;
 
@@ -40,6 +42,7 @@ public class RedisCacheService {
         captchaCache = new RedisCacheTemplate<>(redisUtil, CacheKeyEnum.CAPTCHAT);
 
         loginUserCache = new RedisCacheTemplate<>(redisUtil, CacheKeyEnum.LOGIN_USER_KEY);
+        loginAppUserCache = new RedisCacheTemplate<>(redisUtil, CacheKeyEnum.LOGIN_APP_USER_KEY);
 
         userCache = new RedisCacheTemplate<SysUserEntity>(redisUtil, CacheKeyEnum.USER_ENTITY_KEY) {
             @Override

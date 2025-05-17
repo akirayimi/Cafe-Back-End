@@ -51,6 +51,14 @@ public class AuthenticationUtils {
         }
     }
 
+    public static Long getAppUserId() {
+        try {
+            return ((AppLoginUser) getAuthentication().getPrincipal()).getUserId();
+        } catch (Exception e) {
+            throw new ApiException(ErrorCode.Business.USER_FAIL_TO_GET_USER_INFO);
+        }
+    }
+
     /**
      * 获取Authentication
      */

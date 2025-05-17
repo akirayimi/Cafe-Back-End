@@ -26,4 +26,6 @@ public interface CustomerService extends IService<Customer> {
     Customer getByPhone(String phone);
 
     PageDTO<CustomerBalanceDTO> listCustomerBalance(CustomerQuery command);
+
+    Customer findByOpenId(String openId);
 }

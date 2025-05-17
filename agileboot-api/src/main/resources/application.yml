@@ -20,7 +20,7 @@ server:
 # Spring配置
 spring:
   profiles:
-    active: basic,dev
+    active: basic,prod
 
 
 

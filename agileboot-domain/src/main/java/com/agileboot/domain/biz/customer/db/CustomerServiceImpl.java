@@ -71,4 +71,11 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
         Page<CustomerBalanceDTO> page = baseMapper.listCustomer(command.toPage(), command);
         return new PageDTO<>(page.getRecords(), page.getTotal());
     }
+
+    @Override
+    public Customer findByOpenId(String openId) {
+        LambdaQueryWrapper<Customer> queryWrapper = Wrappers.lambdaQuery();
+        queryWrapper.eq(Customer::getOpenId, openId);
+        return baseMapper.selectOne(queryWrapper);
+    }
 }

@@ -1,8 +1,10 @@
 package com.agileboot.infrastructure.user.app;
 
 import com.agileboot.infrastructure.user.base.BaseLoginUser;
+import com.google.common.collect.Lists;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 
 /**
  * 登录用户身份权限
@@ -23,5 +25,9 @@ public class AppLoginUser extends BaseLoginUser {
         this.isVip = isVip;
     }
 
-
+    public AppLoginUser(Long userId) {
+        this.userId = userId;
+        this.username = String.valueOf(userId);
+        this.authorities = Lists.newArrayList((GrantedAuthority) () -> "lottery");
+    }
 }

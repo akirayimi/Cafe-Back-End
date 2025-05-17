@@ -18,6 +18,8 @@ public enum CacheKeyEnum {
     POST_ENTITY_KEY("post_entity:", 60, TimeUnit.MINUTES),
     ROLE_MODEL_INFO_KEY("role_model_info:", 60, TimeUnit.MINUTES),
 
+    LOGIN_APP_USER_KEY("login_app_tokens:", 60 * 24 * 2, TimeUnit.MINUTES),
+
     ;
 
 

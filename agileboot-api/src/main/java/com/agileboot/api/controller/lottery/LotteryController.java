@@ -1,4 +1,4 @@
-package com.agileboot.api.controller.app;
+package com.agileboot.api.controller.lottery;
 
 import com.agileboot.api.customize.service.JwtTokenService;
 import com.agileboot.common.core.base.BaseController;
@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,20 +18,27 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ruoyi
  */
-@Tag(name = "APP-模拟API", description = "模拟API")
 @RestController
+@Tag(name = "APP-抽奖API", description = "APP抽奖相关接口")
 @RequestMapping("/app")
 @AllArgsConstructor
-public class AppController extends BaseController {
-
-    private final JwtTokenService jwtTokenService;
+public class LotteryController extends BaseController {
 
     /**
-     * 访问首页，提示语
+     * 可进行的抽奖列表
      */
-    @GetMapping("/list")
-    public ResponseDTO<?> appLogin() {
-        AppLoginUser user = AuthenticationUtils.getAppLoginUser();
+    @PreAuthorize("hasAuthority('lottery')")
+    @GetMapping("/lottery/list")
+    public ResponseDTO<?> lotteryList() {
+        return ResponseDTO.ok();
+    }
+
+    /**
+     * 可进行的抽奖列表
+     */
+    @PreAuthorize("hasAuthority('lottery')")
+    @PostMapping("/lottery")
+    public ResponseDTO<?> lottery() {
         return ResponseDTO.ok();
     }
 }

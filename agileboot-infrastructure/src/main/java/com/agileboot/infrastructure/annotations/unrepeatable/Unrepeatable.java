@@ -48,7 +48,7 @@ public @interface Unrepeatable {
 
                 try {
                     AppLoginUser loginUser = AuthenticationUtils.getAppLoginUser();
-                    username = loginUser.getUsername();
+                    username = String.valueOf(loginUser.getUserId());
                 } catch (Exception e) {
                     username = NO_LOGIN;
                     log.error("could not find the related user to check repeatable submit.");

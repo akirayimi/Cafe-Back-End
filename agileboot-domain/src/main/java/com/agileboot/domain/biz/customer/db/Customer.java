@@ -60,6 +60,14 @@ public class Customer extends Model<Customer> {
     @TableField(value = "updater_id", fill = FieldFill.INSERT_UPDATE)
     private Long updaterId;
 
+    @JsonIgnore
+    @TableField("open_id")
+    private String openId;
+
+    @JsonIgnore
+    @TableField("union_id")
+    private String unionId;
+
 
     @Override
     public Serializable pkVal() {

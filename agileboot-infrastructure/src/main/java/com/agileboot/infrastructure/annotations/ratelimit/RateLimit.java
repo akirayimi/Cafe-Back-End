@@ -96,7 +96,7 @@ public @interface RateLimit {
                 if (loginUser == null) {
                     throw new ApiException(ErrorCode.Client.COMMON_NO_AUTHORIZATION);
                 }
-                return rateLimiter.key() + loginUser.getUsername();
+                return rateLimiter.key() + loginUser.getUserId();
             }
         };
 
